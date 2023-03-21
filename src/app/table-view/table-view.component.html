@@ -1,0 +1,62 @@
+
+<link rel="stylesheet" href="table-view.component.css">
+
+<div class="d-flex justify-content-center">
+  <div class="uploadDocument">
+    <input id="my-file-selector" type="file" (change)="uploadData($event)" name="uploadExcel"
+      accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path
+        d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04
+         2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 
+         0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05
+          1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 
+          0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96
+           0 1.65-1.35 3-3 3zM8 13h2.55v3h2.9v-3H16l-4-4z" />
+    </svg>
+    <span>UPLOAD FILE</span>
+  </div>
+</div>
+<div class="box">
+  <form [formGroup]="myFormGroup" (ngSubmit)="callApi(userForm.value)" #userForm="ngForm">
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let header of tableTitle">{{ header }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of tableRecords; let i = index">
+      <td *ngFor="let header of tableTitle">
+        {{ data[header] }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+</form>
+</div>
+<div *ngIf="totalPageCount > 0" class="d-flex justify-content-center">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+
+      <li class="page-item" [ngClass]="{'disabled': currentPage === 0}">
+        <a class="btn btn-outline-primary" (click)="previousPage()">&laquo; Prev</a>
+      </li>
+
+      <span boundaryLinks="true", *ngFor="let n of numSequence(totalPageCount);
+      let i = index;">
+        <a class="page-link" (click)="goToPage(i)">{{ i + 1 }}</a>
+      </span>
+
+      <li class="page-item" [ngClass]="{'disabled': currentPage === totalPageCount - 1}">
+        <a class="btn btn-outline-primary" (click)="nextPage()">Next &raquo;</a>
+      </li>
+      <li class="page-item"><button class="btn btn-outline-primary" ion-button (click)="callApi(data)" >Process</button>
+      </li>
+    </ul>
+  </nav>
+</div>
+<!-- <button (click)="handleExport()" class="btn btn-primary float-right">
+  Export <i class="fa fa-download"></i>
+</button> -->

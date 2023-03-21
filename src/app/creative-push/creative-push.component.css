@@ -1,0 +1,37 @@
+
+div{
+    width:100%;
+    height:auto;
+    margin-top:0 auto;
+}
+
+
+.nav .nav-item{
+    list-style:none;
+    margin:0px;
+  /*  padding:0px; */
+}
+
+
+
+.nav-item{
+    width:11%;
+    float:left;
+    margin:0px;
+    margin-right:2px;
+    padding:10px 5px;
+    text-align: center;
+    background-color:rgb(219, 223, 228);
+    border-radius:15px;
+    /* border-bottom-color: black; */
+}
+ li:hover{
+    cursor:pointer;
+    background-color: skyblue ;
+    /* border-bottom-color:black ; */
+    
+}
+li a{
+    text-decoration: none;
+    color:white;
+}

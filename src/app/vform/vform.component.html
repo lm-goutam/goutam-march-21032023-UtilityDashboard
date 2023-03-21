@@ -1,0 +1,66 @@
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Document</title>
+
+</head>
+<body>
+
+    <div class="container-fluid" >
+        <div class="row justify-content-center" >
+
+            <div class="col-lg-12" >
+                <div class="card text-dark">
+                    <h2 class="card-title text-dark mt-3">Dax Creative push for Approval</h2>
+                    <hr class=" border position-relative ">
+                    <div class="card-body">
+
+                        <form class="row g-3 mt-3 needs-validation" [formGroup]="Userform" novalidate 
+                              #userForm="ngForm" (ngSubmit)="onSubmit(Usermodel.value)" >
+
+               <!--  Url -->
+                            <label for="url" class="form-label"> Url</label>
+                            <div class="input-group has-validation">
+                                <input type="url" class="form-control rounded-pill" name="iurl" id="enterurl"
+                                 required [(ngModel)]="Usermodel.ads.creative.iurl" formControlName="iurl" >
+                                
+                            </div>
+                            <span *ngIf="iurl?.invalid && (iurl?.dirty || iurl?.touched)">Url Required*</span>
+
+               <!-- Lemma Creative Id -->
+                            <label for="url" class="form-label">Lemma Creative Id</label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control rounded-pill" name="dadid" id="Id" 
+                                 required [(ngModel)]="Usermodel.ads.dadid" formControlName="dadid">
+                                   
+                            </div>
+                            <span *ngIf="dadid?.invalid && dadid?.touched">Id is required*</span>
+               <!-- AD domain -->
+                            <label for="url" class="form-label">AD Domain (Lemma)</label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control rounded-pill" name="adomain" id="Id" 
+                                 required name="adomain" [(ngModel)]="Usermodel.ads.adomain" formControlName="adomain"> 
+                            </div>
+                             <span *ngIf="adomain?.invalid && adomain?.touched"> Domain Required*</span> 
+               <!-- Button -->
+                            <div class="col-md-12 text-center ">
+                                <button class="btn btn-secondary" title="Submit Your Form" aria-label="Left Align" [disabled]="!userForm.valid"> 
+                                    <span class="" aria-hidden="true"></span> Save </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+</body>
+
+</html>

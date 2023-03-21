@@ -1,0 +1,50 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container" >
+  <div class="row">
+    <form  name="form" #intgsform="ngForm">
+      <div class="form-bg" >
+          <div class="panel panel-primary">
+            <div class="panel-body">
+              <button type="button" class="btn btn-warning" routerLink="/dashboard">ADD</button></div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div>
+              <table class="table">
+                <thead class="table-primary">
+                <tr>
+                  <th scope="col">S.No</th>
+                  <th scope="col">Organization</th>
+                  <th scope="col">C.M.S</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Applications</th>
+                  <th scope="col">App URL</th>
+                  <th scope="col">Comments</th>
+                </tr>
+              </thead>
+              <tbody class="table-secondary">
+                <tr *ngFor="let intg of intgData; let i=index">
+                  <th scope="row">{{i+1}}</th>
+                  <td >{{org[i]}}</td>
+                  <td>{{cms[i]}}</td>
+                  <td>{{status[i]}}</td>
+                  <td>{{app[i]}} </td>
+                  <td>{{intg.appUrl}} </td>
+                  <td>{{intg.comment}} </td>
+                  <td style="background-color: #fafafa;"><button type="button" class="btn btn-sucess" style=" background-color: rgb(60, 201, 121); margin-top: .5em; margin-left: .5rem; margin-right: .5rem; padding: .1rem .2rem;" (click)="updateItem(intg.integrationstatusId)">
+                    <i class="fa fa-pencil-square" style="color: white;"></i>
+                  </button></td>
+                  <td style="background-color: #fafafa;"><button type="button" class="btn btn-danger" style="background-color: red; margin-top: .5em; margin-left: .5rem; margin-right: .5rem;padding: .1rem .2rem;" (click)="deleteItem(intg)">
+                    <i class="fa fa-trash-o"></i>
+                  </button></td>
+                </tr>
+              </tbody>
+              </table>
+            </div>
+      </div>
+    </form>
+  </div>
+</div>

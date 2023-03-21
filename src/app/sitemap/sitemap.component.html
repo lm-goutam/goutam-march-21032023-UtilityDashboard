@@ -1,0 +1,122 @@
+<br>
+<br>
+<nav class="navbar navbar-expand-lg navbar-light">
+<div class="container-fluid">
+<!-- <label class="uploadDocument d-flex1" ngbTooltip="Browse File">
+<input id="my-file-selector" type="file" (change)="uploadData($event)" name="uploadExcel"
+accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+<span>BulkUpload</span>
+</label>&nbsp;&nbsp;&nbsp; -->
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+&nbsp;&nbsp;<label class="uploadDocument d-flex1" ngbTooltip="Browse File">
+<input id="my-file-selector" type="file" (change)="uploadData($event)" name="uploadExcel"
+accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+<span class='material-icons'>cloud_upload</span>
+<span>BulkUpload</span>
+</label>&nbsp;&nbsp;
+<ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+<li class="nav-item">
+<article class="table-header">
+<button id="hell" class="nav-link active" aria-current="page" (click)="addItem(i)" isEdit="true" ngbTooltip="Add a new row">Add-Item</button>
+</article>
+</li>
+<li class="nav-item">
+<button id="hell" class="nav-link active" (click)="uploadButton(data)" ngbTooltip="Send data to server">uploadData</button>
+</li>
+</ul>
+<!-- <li class="nav-item" id="nav-item1">
+<button id="hel" class="nav-link active">Delete</button>
+</li>
+<li class="nav-item" id="nav-item1">
+<button id="hel" class="nav-link active">Clean</button>
+</li> -->
+<!-- <button class="d-flex">
+<input id="my-file-selector me-2" type="file" (change)="uploadData($event)" name="uploadExcel"
+accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+</button> -->
+</div>
+</div>
+</nav>
+
+<br>
+<div class="box" id="table-1">
+<form [formGroup]="myFormData" (ngSubmit)="callApi(userForm.value)" #userForm="ngForm">
+
+<nv-editable-table class="hidedata table-striped" *ngIf="totalPageCount >= 0">
+
+<thead>
+<tr>
+<th class="pos" *ngFor="let header of tableTitle">{{ header }} 
+</th>
+<th class="pos">Action</th>
+</tr> 
+</thead> 
+<tbody>
+
+<tr *ngFor="let data of tableRecords; let i = index">
+
+<td class="nth-child" *ngFor="let header of tableTitle">
+
+<!-- {{ data[header] }} -->
+<span [class.hide]="data['isEditable']">{{data[header]}}</span>
+<input
+type="text" 
+value="{{data[header]}}"
+[class.hide]="!data['isEditable']"
+style="width:100%"
+/>
+</td>
+<td class="d-flex justify-content-center gap-1" input type="text">
+<button class="btn btn-outline-danger" id="action" class="material-icons" style="font-size: 35px; border: 1px solid black;" (click)="OnDelete(i)" ngbTooltip="Delete">delete</button><br>
+
+<button class="btn btn-outline-warning" (click)="OnEdit(i)" [class.hide]="data.isEditable" id="action" class="material-icons" style="font-size: 35px; border: 1px solid black;" ngbTooltip="Edit">mode_edit</button><br>
+<button class="btn btn-outline-success" [class.hide]="!data.isEditable" (click)="Onsubmit(i)" onchange="" id="action" class="material-icons" style="font-size: 35px; border: 1px solid black;" ngbTooltip="Save">save</button><br>
+<button class="btn btn-outline-danger" id="action" class="material-icons" style="font-size: 35px; border: 1px solid black;" ngbTooltip="Clean" (click)="OnDelete(i)">delete_forever</button><br>
+<!-- // -->
+<!-- <div *ngIf="editingRow">
+<form (submit)="saveRow(editedRow)">
+<label>Name:</label>
+<input [(ngModel)]="editedRow.name" name="name" required>
+<label>Email:</label>
+<input [(ngModel)]="editedRow.email" name="email" required>
+<button type="submit">Save</button>
+</form>
+</div> -->
+<!-- // -->
+</td> 
+</tr>
+</tbody>
+</nv-editable-table>
+</form>
+</div>
+<!-- <nav aria-label="Page navigation example" class="navbar navbar-expand-lg navbar-light"> -->
+<div *ngIf="totalPageCount > 0" class="container">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<ul class="pagination">
+<li class="page-item" [ngClass]="{'disabled': currentPage === 0}">
+<a class="btn btn-outline-primary" (click)="previousPage()" ngbTooltip="PreviousPage">&laquo; Prev</a>
+</li> 
+
+<li class="page-item" boundaryLinks="false" , *ngFor="let n of numSequence(this.currentPage);
+let i = index;">
+<a class="label" (click)="goToPage(this.currentPage)">{{ i + 1 }}</a>
+</li>
+<li class="page-item" [ngClass]="{'disabled': currentPage === totalPageCount - 1}">
+<a class="btn btn-outline-primary" (click)="nextPage()" ngbTooltip="NextPage">Next &raquo;</a>
+</li> 
+</ul>
+<!-- <ul class="pagecs">
+<li class="page-item1"> -->
+<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pagecs" aria-controls="pagecs" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button> -->
+<button id="pagecs" class="btn btn-outline-success" (click)="callApi(data)" ngbTooltip="Get Token">Process</button>
+<!-- </li>
+</ul> -->
+</div>
+<!-- </nav> -->

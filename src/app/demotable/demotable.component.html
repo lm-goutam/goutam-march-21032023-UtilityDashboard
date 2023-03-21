@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Document</title>
+</head>
+<body>
+<!-- table is from here  -->
+  <div class="hello">
+    <form [formGroup]="userForm" #myform="ngForm" (ngSubmit)="Onsubmit(userForm.value)"
+      style="width:99%; margin-left: 2px;">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="publisher">Publisher:</label>
+          <select class="form-select" #publisher formControlName="Publisher" name="Publisher"
+            [(ngModel)]="Selectedorg.Id" (change)="OnSelectPublisher($event)"
+            [ngClass]="{'is-invalid':submitted && userForm.controls['Publisher'].errors && userForm.get('Publisher')?.touched}">
+            <option value="" selected disabled>choose</option>
+            <option *ngFor=" let item of Backend_data " value={{item.Org_id}} >
+              {{item.Org_Name}}
+            </option>
+          </select>
+          <div *ngIf="submitted && userForm.controls['Publisher'].errors" class="text-danger">
+            <div *ngIf="submitted && userForm.controls['Publisher'].errors['required'] && userForm.get('Publisher')?.touched">
+              Publisher is required
+            </div>
+          </div>
+          &nbsp;
+        </div>
+        <div class="col-sm-3">
+          <label for="Groupdisplay">Group Display:</label>
+          <select class="form-select" formControlName="Groupdisplay" name="Groupdisplay" #Groupdisplay
+            [(ngModel)]="selectedgroup" (change)="OnSelectGroup($event)"
+            [ngClass]="{'is-invalid':submitted && userForm.controls['Groupdisplay'].errors && userForm.get('Groupdisplay')?.touched}">
+            <option value="" selected disabled>choose</option>
+            <option *ngFor="let item of groupdisplaylist " value={{item.Group_Id}}>
+              {{item.Display_Name}}
+            </option>
+          </select>
+          <div *ngIf="submitted && userForm.controls['Groupdisplay'].errors" class="text-danger">
+            <div
+              *ngIf="submitted && userForm.controls['Groupdisplay'].errors['required'] && userForm.get('Groupdisplay')?.touched ">
+              GroupDisplay is required
+            </div>
+          </div>
+          &nbsp;
+        </div>
+        <div class="col-sm-3">
+          <label for="addunit">Ad-Unit:</label>
+          <select class="form-select" formControlName="AdUnit" name="AdUnit" #addunit
+            [ngClass]="{'is-invalid':submitted && userForm.controls['AdUnit'].errors && userForm.get('AdUnit')?.touched}">
+            <option value="" selected disabled>choose</option>
+            <option *ngFor="let items of adunit" value={{items.Ad_Id}}>
+              {{items.Ad_Name}}
+            </option>
+          </select>
+          <div *ngIf="submitted && userForm.controls['AdUnit'].errors" class="text-danger">
+            <div *ngIf="submitted && userForm.controls['AdUnit'].errors['required'] && userForm.get('AdUnit')?.touched">
+              AdUnit is required
+            </div>
+          </div>
+          &nbsp;
+        </div>
+        <div class="col-sm-3">
+          <label for="creative">Creative:</label>
+          <select class="form-select" formControlName="Creative" name="Creative" #creative
+            (change)="OnselectCreative(creative.value)"
+            [ngClass]="{'is-invalid':submitted && userForm.controls['Creative'].errors && userForm.get('Creative')?.touched}">
+            <option value="">choose</option>
+            <option *ngFor="let items of create">
+              {{items.id}} <!--Here Get Data From Dropdown from json files-->
+              {{items.name}}
+            </option>
+          </select>
+          <div *ngIf="submitted && userForm.controls['Creative'].errors" class="text-danger">
+            <div
+              *ngIf="submitted && userForm.controls['Creative'].errors['required'] &&  userForm.get('Creative')?.touched">
+              Creative is required
+            </div>
+          </div>
+          &nbsp;
+        </div>
+      </div>
+      <div class="mt-5">
+        <div class="form-row">
+          <table id="tab" class="table">
+            <thead>
+              <tr>
+                <th>Date(mm-dd-yy)</th>
+                <th>LineItemId</th>
+                <th>Campaign</th>
+                <th>Impr/Day/Screen</th>
+                <th>Duration</th>
+                <th>Range <br/>
+                Difference</th>
+                <th>Ad-Type-Id</th>
+                <th>Dsp-Id</th>
+                <th>AdFee</th>
+                <th>Action</th> <!-- this is row head data-->
+              </tr>
+              <!--from here input fields are place for tables-->
+              <tr *ngFor='let id of count'>
+              <td> <mat-form-field appearance="fill">
+                    <!-- use angular material Date picker for date input given range  -->
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input formControlName="startDate" #dateRangeStart name="startDate" matStartDate
+                        placeholder="Start date"
+                        [ngClass]="{'is-invalid':submitted && userForm.controls['startDate'].errors}">
+                      <input formControlName="Enddate" name="Enddate" matEndDate placeholder="End date"
+                        [ngClass]="{'is-invalid':submitted && userForm.controls['Enddate'].errors}">
+
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                    <mat-error *ngIf="['startDate']hasError('required')">Please select a Date.</mat-error>
+                  </mat-form-field>
+                </td>
+                <td><input type="text" [(ngModel)]="LineItemId" (keypress)="keypressNo($event)" inputmode="numeric"
+                    formControlName="LineItemId" name="LineItemId"  class="form-control" placeholder=""
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['LineItemId'].errors && userForm.get('LineItemId')?.touched}"
+                     style="margin-bottom: 20px;  width: 100%;">
+                </td>
+                <td><input type="text" [(ngModel)]="Campaigns" formControlName="Campaigns" name="Campaigns" (keypress)="keypressNo($event)" 
+                     class="form-control" placeholder=""
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['Campaigns'].errors && userForm.get('Campaigns')?.touched}"
+                    style="margin-bottom: 20px; width: 100%;">
+                </td>
+                <td><input type="text" formControlName="Impression" name="Impression" 
+                    (keypress)="keypressNo($event)" placeholder=""
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['Impression'].errors && userForm.get('Impression')?.touched}"
+                    class="form-control"  style="margin-bottom: 20px; width: 100%;">
+                </td>
+                <td><input type="text" formControlName="Duration" name="Duration"  (keypress)="keypressNo($event)"
+                    placeholder=""
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['Duration'].errors && userForm.get('Duration')?.touched}"
+                    class="form-control" style="margin-bottom: 20px; width: 100%;">
+                </td>
+                <td><input type="text" formControlName="RangeDifference" name="RangeDifference" 
+                    (keypress)="keypressNo($event)" placeholder=""
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['RangeDifference'].errors  && userForm.get('RangeDifference')?.touched}" class="form-control" 
+                    style="margin-bottom: 20px; width: 100%;">
+                </td>
+                <td><input type="text" formControlName="AdType" name="AdType"  (keypress)="keypressNo($event)"
+                    class="form-control" placeholder=""
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['AdType'].errors && userForm.get('AdType')?.touched}"
+                    style="margin-bottom: 20px; width: 100%;">
+                </td>
+                <td><input type="text" formControlName="dspID" name="dspID"  (keypress)="keypressNo($event)"
+                    class="form-control" placeholder=""
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['dspID'].errors  && userForm.get('dspID')?.touched}"
+                    style="margin-bottom: 20px; width: 100%;">
+                </td>
+                <td><input type="text" formControlName="AdFee" name="AdFee"  (keypress)="keypressNo($event)"
+                    class="form-control" placeholder=""
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['AdFee'].errors && userForm.get('AdFee')?.touched}"
+                    style="margin-bottom: 20px; width: 100%;">
+                </td>
+                <td>
+                  <button type="button" (click)="remove(id)" class="btn btn-danger" style="margin-bottom: 20px;" ngbTooltip="Remove Row"><i
+                      class="fa fa-trash-o" style="font-size:20px"></i></button>
+                  <!--this button is for remove additional added table row-->
+                </td>
+              </tr>
+            </thead>
+          </table>
+          <div class="form-row mt -4">
+            <div class="col-md-6">
+              <button type="button" (click)="addItem()" class="btn btn-primary" style="margin-left: 10px;" ngbTooltip="Add Row">ADD</button>
+              <!-- button for add additonal table row  -->
+              &nbsp;
+              <button (click)="Onsubmit(userForm.value)" type="submit" class="btn btn-success" ngbTooltip="Save Your Data">Save</button>
+              <!-- Save Button-->
+              &nbsp;
+              <button type="submit" class="btn btn-link" (click)="resetform()" ngbTooltip="Clear Data">clear</button>
+              <!-- clear button for clear the data of form fields-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="col-md-8 mt-4 mb-4">
+    </div>
+  </div>

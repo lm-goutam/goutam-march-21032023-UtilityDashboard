@@ -1,0 +1,64 @@
+
+.lbl{
+  font-size: 18px;
+  font-family: Calibri;
+  color:black;
+  font-weight: bold;
+  
+}
+.head1{
+  font-family: Calibri;
+  color: black;
+  position: relative;
+  position: center;
+  margin-left: 39%;
+  
+ 
+
+}
+.container {
+  margin-top: 8%;
+  background-color:#f1f1f1;
+  width: 40%;
+}
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 35%;
+  border-radius: 50%;
+ 
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.checboxlbl{
+  font-size: 20px;
+}
+
+
+
+

@@ -1,0 +1,129 @@
+
+[
+  {
+    "Org_id": 1,
+    "Org_Name": "Lemma",
+    "Display_Group": [
+      {
+         "Display_Name": "Shaktiman",
+        "ad_unit": [
+          {
+            "Id": 1,
+            "Ad_Name": "A"
+          },
+          {
+            "Id": 2,
+            "Ad_Name": "B"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Org_id": 1,
+    "Org_Name": "Lemma",
+    "Display_Group": [
+      {
+        
+        "Display_Name": "Shaktiman",
+        "ad_unit": [
+          {
+            "Id": 2,
+            "Ad_Name": "B"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Org_id": 1,
+    "Org_Name": "Lemma",
+    "Display_Group": [
+      {
+        
+        "Display_Name": "Shaktiman",
+        "ad_unit": [
+          {
+            "Id": 3,
+            "Ad_Name": "C"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Org_id": 1,
+    "Org_Name": "Lemma",
+    "Display_Group": [
+      {
+        "Display_Name": "Vivo",
+        "ad_unit": [
+          {
+            "Id": 4,
+            "Ad_Name": "D"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Org_id": 1,
+    "Org_Name": "Lemma",
+    "Display_Group": [
+      {
+        "Display_Name": "Vivo",
+        "ad_unit": [
+          {
+            "Id": 5,
+            "Ad_Name": "E"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Org_id": 2,
+    "Org_Name": "Delhi",
+    "Display_Group": [
+      {
+        "Display_Name": "Birla",
+        "ad_unit": [
+          {
+            "Id": 6,
+            "Ad_Name": "F"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Org_id": 2,
+    "Org_Name": "Delhi",
+    "Display_Group": [
+      {
+        "Display_Name": "Birla",
+        "ad_unit": [
+          {
+            "Id": 6,
+            "Ad_Name": "G"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Org_id": 1,
+    "Org_Name": "Lemma",
+    "Display_Group": [
+      {
+        "Display_Name": "Apple",
+        "ad_unit": [
+          {
+            "Id": 7,
+            "Ad_Name": "H"
+          }
+        ]
+      }
+    ]
+  }
+]

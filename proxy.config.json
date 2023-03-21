@@ -1,0 +1,20 @@
+{
+    "/api/*": {
+      "target": "https://console.test-ads.outdoor.thisisdax.com/",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "lemma/*": {
+      "target": "https://sandbox.lemmatechnologies.com/",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "/v1/*":{
+      "target":"https://smartexchange-content.viooh.com/api/v1/creative",
+      "secure":false,
+      "logLevel":"debug",
+      "changeOrigin":true
+    }
+}

@@ -1,0 +1,74 @@
+<body>
+  <div class="container" >
+    <div class="row">
+      <form  name="form" #intgsform="ngForm" (ngSubmit)="intgsform.valid && onSubmit()"  (ngSubmit)="intgsform.valid && onIntgsUpdate(intgsform.value)" 
+              (ngSubmit)="intgsform.invalid && unSubmit()" >
+        <div class="form-bg" >
+            <div class="panel panel-primary">
+              <div class="panel-body">
+                <br>
+                <br>
+                <div class="form-group">
+                  <label for="I_cms">Organization Name</label>
+                  <label style="font-size: 15px; border-radius: 4px; width:100% ;background-color: white;
+                           text-align: left; padding: 8px; box-sizing: border-box; ">
+                    {{ orgName }}
+                  </label>
+                </div>
+                <br/>
+                <div class="form-group">
+                  <label for="integrationstatuscms">CMS Name</label></div>
+                  <div class=" col-md-3 " style="height:20%;font-size: 15px; width:100%">
+                    <ng-select id="integrationstatuscms" name="integrationstatusCms" [(ngModel)]="selectedCms" 
+                                (change)="selectedC()" required >
+                      <ng-option *ngFor="let branch of cmsData" [value]="branch.cmsId" >
+                        {{branch.cmsinfo}}
+                      </ng-option>
+                    </ng-select>
+                  </div>
+                <br/>
+                  <div class="form-group">
+                    <label for="integrationstatusStatus">Status</label></div>
+                    <div class=" col-md-3 " style="height:20%;font-size: 15px; width:100%">
+                      <ng-select id="integrationstatusstatus" name="integrationstatusStatus" [(ngModel)]="selectedStatus" 
+                                  (change)="selectedS()"  required>
+                        <ng-option *ngFor="let sts of statData" [value]="sts.statusId">
+                          {{sts.statusinfo}}
+                        </ng-option>
+                      </ng-select>
+                    </div>
+                  <br/>
+                    <div class="form-group">
+                      <label for="I_app">Applications</label>
+                    </div>  
+                      <div class=" col-md-3 " style="height:20%;font-size: 15px; width:100%">
+                        <ng-select id="integrationstatusApp" name="integrationstatusApp" [(ngModel)]="selectedApp" 
+                                    (change)="selectedS()" [multiple]="true"  required>
+                          <ng-option *ngFor="let aap of appData" [value]="aap.applicationId">{{aap.applicationinfo}}</ng-option>
+                        </ng-select>
+                      </div>
+                  <br/>
+                    <div class="form-group">
+                      <label for="App_url">Application URL</label>
+                        <input id="appUrl" type="text" class="form-control"
+                          name="appUrl" [(ngModel)]="selectedAppUrl"  (change)="changeA($event)">
+                    </div>  
+                    <br/>
+                    <div class="form-group">
+                      <label for="Comment">Comments</label>
+                        <input id="comment" type="text" class="form-control"
+                          name="comment" [(ngModel)]="selectedCom"  (change)="changeC($event)">
+                     </div>
+              </div>
+              <br/>
+              <br/>
+              <div class="panel-footer" style="text-align: center;">
+                <button class="btn btn-primary" type="submit" >Done</button>
+                <br><br><br>  
+              </div>
+            </div>    
+      </div>
+    </form>
+  </div>
+</div>
+</body>

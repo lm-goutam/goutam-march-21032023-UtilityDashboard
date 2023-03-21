@@ -1,0 +1,49 @@
+.container-fluid {
+    margin-top: 2%;
+}
+
+.card {
+    background-color: #87CEEB;
+    margin-top: -2%;
+    height: 122%;
+    position: inherit;
+}
+
+.card-title {
+    align-self: center;
+}
+
+.border {
+    width: 80%;
+    align-self: center;
+    margin: 0px;
+}
+
+.row {
+    margin-left: 15%;
+    width: 68%;
+}
+
+.btn {
+    border-radius: 10px;
+    color: #000;;
+    width: 10%;
+    height: 113%;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #c64f23;
+    border-color: #565e64;
+}
+
+button {
+    border-radius: 10px;
+    color: #000;
+    width: 10%;
+    height: 113%;
+    background-color: #D3D3D3;
+}
+span {
+    color: #FF0000;
+}

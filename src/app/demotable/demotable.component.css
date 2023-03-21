@@ -1,0 +1,57 @@
+#tab {
+    font-family:  'Calibri';
+    margin-left: 6px;
+  
+   }
+    #tab td, #tab th {
+      border: 1px solid #ddd;
+      padding: 2px;
+      margin: 0;
+      padding-bottom: px;
+ }
+ #tab tr:nth-child(even){background-color: #f2f2f2;}
+ #tab tr {background-color: #ddd;}
+ #tab th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #b5bcc4;
+    color: 333333;
+    font-size: 14px;
+    font-family: 'Calibri';
+   }
+  .car{
+      width:300px;
+  }
+  label{
+    font-size: 100%;
+    font-weight: bold;
+    font-family: ' Calibri';
+    
+  }
+  .date{
+    width:100px;
+  }
+ .row{
+  margin-top: 15px; padding:20px;
+  position: sticky;
+  top: 0;
+  
+}
+.form-select{
+  width: 60%;
+  border-radius: 1px;
+  background-color:rgba(191, 183, 189, 0.08);
+  color:rgb(73, 73, 161);
+ 
+
+  
+        
+ 
+}
+.hello {
+  width:99%;
+   margin-top: 3%; 
+   top: 0;
+   position: sticky;
+}

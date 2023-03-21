@@ -1,0 +1,55 @@
+.container-fluid{
+    margin-top: 2%;
+}
+.form-select{
+    margin-left: 0.5% ;
+     width:99%;
+}
+
+.card {
+    background-color: #87CEEB;
+    margin: -2%;
+    height: 130%;
+    width: 99%;
+    position: inherit;
+    margin-left: 1%;
+}
+
+.card-title {
+    align-self: center;
+}
+
+.border {
+    width: 80%;
+    align-self: center;
+    margin: 0px;
+}
+
+.btn {
+    border-radius: 10px;
+    color: #000;
+    ;
+    width: 10%;
+    height: 113%;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #c64f23;
+    border-color: #565e64;
+}
+
+button {
+    border-radius: 10px;
+    color: #000;
+    width: 10%;
+    height: 113%;
+    background-color: #D3D3D3;
+}
+
+span {
+    color: #FF0000;
+}
+
+
+

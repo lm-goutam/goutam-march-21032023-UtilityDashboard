@@ -1,0 +1,23 @@
+
+
+.row{
+    margin-top: 7rem;
+    background-color: skyblue;
+    width: 50rem;
+    height: 40rem;
+      
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100%;
+    background-color: white;
+  }
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
